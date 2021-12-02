@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server');
-const accountTypeDefs = gql `
+const billing_TypeDefs = gql `
+
 type Client {
 
 id: String!
@@ -10,10 +11,29 @@ useTime: Int!
 cost: Double!
 state: String!
 }
-extend type Query {
-facturaByState(state: String!): Client
+
+input ClientInput {
+LicensePlate: String!
 }
+
+extend type Mutation {
+createClient(Client: ClientInput!): Client
+}
+
+input getBillingClient {
+LicensePlate: String!
+}
+
+extend type Mutation {
+getBillingClient(Client: getBillingClienteInput!): Client
+}
+
+extend type Query {
+ClientByState(state: String!): Client
+ClientBylicensePlateandState(state: String!): Client
+}
+
 `;
-module.exports = accountTypeDefs;
+module.exports = billing_TypeDefs;
 
 
