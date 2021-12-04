@@ -12,15 +12,8 @@ const clientResolver = {
     },
     Mutation: {
         createClient: async(_, { client }, { dataSources }) => {
-            const clientInput = {
-                licensePlate: client.licensePlate,
-                entryDate   : client.entryDate,
-                exitDate    : client.exitDate,
-                userTime    : client.userTime,
-                cost        : client.cost,
-                state       : client.state
-            }
-            return await dataSources.billingAPI.createClient(clientInput);
+            
+            return await dataSources.billingAPI.createClient(client);
         },
         saveBilling: async(_, { client, licensePlate}, { dataSources }) =>
             dataSources.billingAPI.saveBilling(client,licensePlate)

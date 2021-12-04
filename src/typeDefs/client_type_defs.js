@@ -4,7 +4,7 @@ const clientTypeDefs = gql `
         licensePlate: String!
         entryDate: String
         exitDate: String
-        userTime: Int
+        useTime: Int
         cost: Float
         state: String
     }
@@ -12,7 +12,7 @@ const clientTypeDefs = gql `
         licensePlate: String!
         entryDate: String
         exitDate: String
-        userTime: Int
+        useTime: Int
         cost: Float
         state: String
     }
