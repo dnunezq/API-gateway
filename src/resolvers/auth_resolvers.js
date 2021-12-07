@@ -6,10 +6,11 @@ const usersResolver = {
             else
                 return null
         
-        }
+        },
     },
     Mutation: {
         signUpUser: async(_, { userInput }, { dataSources }) => {
+           
             const authInput = {
                 username: userInput.username,
                 password: userInput.password,

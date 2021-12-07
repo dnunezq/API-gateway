@@ -1,6 +1,7 @@
 const { ApolloError } = require('apollo-server');
 const serverConfig = require('../server');
 const fetch = require('node-fetch');
+
 const authentication = async ({ req }) => {
     const token = req.headers.authorization || '';
     if (token == '')
@@ -18,7 +19,7 @@ const authentication = async ({ req }) => {
                 console.log(response)
                 throw new ApolloError(`SESION INACTIVA - ${401}` + response.status, 401)
             }
-            return { userIdToken: (await response.json()).UserId };
+            return { userIdToken: (await response.json()).user_id };
         }
         catch (error) {
             throw new ApolloError(`TOKEN ERROR: ${500}: ${error}`, 500);

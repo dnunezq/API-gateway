@@ -7,28 +7,28 @@ class BillingAPI extends RESTDataSource {
     }
     async createClient(client) {
         client = new Object(JSON.parse(JSON.stringify(client)));
-        return await this.post('/create', client);
+        return await this.post('/clients', client);
     }
     async getActiveClients() {
-        return await this.get(`/Clients`);
+       return await this.get(`/clients`);
     }
     async getHistoricalClients() {
         return await this.get(`/historical`);
     }
     async billingClient(licensePlate) {
-        return await this.get(`/Clients/${licensePlate}`);
+        return await this.get(`/clients/${licensePlate}`);
     }
     async saveBilling(client,licensePlate) {
         client = new Object(JSON.parse(JSON.stringify(client)));
-        return await this.post(`/Clients/${licensePlate}`, client);
+        return await this.post(`/clients/${licensePlate}`, client);
     }
 
     async getActualSettings() {
-        return await this.get(`/Settings`);
+        return await this.get(`/settings`);
     }
     async modifySettings(settingsParking) {
         settingsParking = new Object(JSON.parse(JSON.stringify(settingsParking)));
-        return await this.post(`/Settings`, settingsParking);
+        return await this.post(`/settings`, settingsParking);
     }
 }
 module.exports = BillingAPI;
