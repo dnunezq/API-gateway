@@ -15,7 +15,7 @@ const authentication = async ({ req }) => {
                 };
 
                 let response = await fetch(
-                    `${serverConfig.auth_api_url}/verifyToken/`,
+                    `${serverConfig.auth_api_url}/verifyToken/`, /* ¡AJUSTAR EL API DEL PROYECTO   */
                     requestOptions)
             
                 if (response.status != 200) {
