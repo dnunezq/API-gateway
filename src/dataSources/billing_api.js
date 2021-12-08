@@ -10,10 +10,14 @@ class BillingAPI extends RESTDataSource {
         return await this.post('/clients', client);
     }
     async getActiveClients() {
+        
        return await this.get(`/clients`);
     }
-    async getHistoricalClients() {
-        return await this.get(`/historical`);
+    async getHistoricalClients(typeDate,date) {
+        console.log("pass");
+        let ct=await this.get(`/historical/${typeDate}/${date}`);
+        console.log(ct);
+        return ct
     }
     async billingClient(licensePlate) {
         return await this.get(`/clients/${licensePlate}`);

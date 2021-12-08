@@ -11,7 +11,7 @@ const clientTypeDefs = gql `
         
     }
     type Client{
-        licensePlate: String!
+        licensePlate: String
         entryDate: String
         exitDate: String
         useTime: Int
@@ -23,13 +23,19 @@ const clientTypeDefs = gql `
         clients:[Client]!
         capacity: Int
     }
+    
+    type ResultHistorical{
+        clients: [Client]
+        earnings: Float
+        
+    }
     extend type Mutation {
         createClient(client: ClientInput!): Client
         saveBilling(client:ClientInput!,licensePlate:String!): Client    
     }
     extend type Query {
         clientByActiveState(user:String):ClientAndCapacity
-        clientByInactiveState(user:String):[Client]
+        clientByInactiveState(typeDate:String! date:String ):ResultHistorical
         clientByLicensePlate(licensePlate: String!): Client
     }
 `;
